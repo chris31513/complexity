@@ -14,3 +14,4 @@ make build_instance name={instance_name} size={number_of_vertices}
 ``` bash
 make solve file={instance_name} start={first_vertex} end={last_vertex}
 ```
+---
