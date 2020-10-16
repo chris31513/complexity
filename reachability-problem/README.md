@@ -6,5 +6,5 @@ __Requirements:__
 ---
 __Instructions:__
 ``` {r, engine='bash', count_lines}
-$ make build_instance name={instance_name} size={number_of_vertices}
+make build_instance name={instance_name} size={number_of_vertices}
 ```
