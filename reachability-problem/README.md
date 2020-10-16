@@ -6,6 +6,6 @@ __Requirements:__
 ---
 __Instructions:__
 ``` {r, engine='bash', count_lines}
-+ To buil an instance
+To buil an instance:
 make build_instance name={instance_name} size={number_of_vertices}
 ```
