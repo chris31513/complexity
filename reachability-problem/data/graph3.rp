@@ -1,0 +1,1 @@
+{Name:graph3,V:[v1, v2, v3, v4, v5, v6, v7, v8, v9, v10],E:[v5-v9, v9-v10, v6-v7, v5-v2, v8-v7, v5-v8, v7-v10, v4-v6, v7-v9, v6-v3, v9-v2, v4-v1, v6-v9, v2-v8, v1-v7, v5-v1, v7-v3, v9-v3, v4-v9, v10-v1, v3-v5]}
