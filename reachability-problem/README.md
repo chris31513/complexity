@@ -1,4 +1,4 @@
-## Reachability Problem
+## Non-deterministic solution for the Reachability Problem
 ---
 __Requisitos:__
 - __[Numpy](https://numpy.org/)__ - Math library for Python
