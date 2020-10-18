@@ -3,7 +3,19 @@ import os
 import sys
 from graph import *
 
+
+"""
+	Function that reads a file in data/ and builds the graph.
+
+	Note: all files for this algorithm should be written like this: {Name: graph_name, V: vertex_list, E: edges_set}
+
+	The edge's description should be like this: 'vn-vm' with vn and vm in V and vm != vn.
+
+	I assume the graph isn't directed, so if 'vn-vm' is in E I automatically add 'vm-vn' to E. So it isn't necessary to put 'vn-vm' and 'vm-vn' in the description of E.
+
+"""
 def parse_graph(file: str) -> Graph:
+
 	with open(os.path.dirname(__file__) + '/../data/' + file, 'r') as loaded:
 		description = loaded.read().replace("'", '')
 		important_data = {0: 'Name', 1: 'V', 2: 'E'}
@@ -36,6 +48,6 @@ if __name__ == '__main__':
 	is_reachable = graph.solve_reachability(init, end)
 
 	if is_reachable:
-		graph.show_graph('Sí se resolvió')
+		graph.show_graph('Sí se encontró un camino')
 	else:
-		graph.show_graph('No se resolvió')
+		graph.show_graph('No se encontró un camino')

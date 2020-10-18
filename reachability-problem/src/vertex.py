@@ -1,5 +1,12 @@
+
+"""Object that represents some vertex in the graph"""
 class Vertex(object):
 
+
+	"""
+		name: the name of the vertex
+		neighbors: all neighboring objects
+	"""
 	def __init__(self: object, name: str, neighbors: list = None):
 		self.name = name
 		if neighbors == None:

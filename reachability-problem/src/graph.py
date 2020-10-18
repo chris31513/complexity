@@ -3,14 +3,21 @@ import random
 import matplotlib.pyplot as plt
 from vertex import *
 
+
+"""Class to represent a Graph"""
 class Graph(object):
 
+
+	"""
+		name: the name of the graph
+		V: the vertex set
+		E: the edges set
+	"""
 	def __init__(self: object, name: str, V: list, E: list):
 		self.name = name
 		self.V = list()
-		self.v = V
 		self.E = list(map(lambda x: tuple(x.split('-')), E))
-		self.path = list()
+		self.path = list() # The path to end vertex, since this algorithm is non-deterministic the path always changes between executions
 
 		for v in V:
 			vertex = Vertex(v)
@@ -29,9 +36,11 @@ class Graph(object):
 						if pair[0] == v1.name:
 							v.set_neighbor(v1)
 
+
+	"""Function to show nice graph"""
 	def show_graph(self: object, title: str):
 		G = nx.Graph()
-		G.add_nodes_from(self.v)
+		G.add_nodes_from(list(map(lambda x: x.name, self.V)))
 		path_to_edges = list()
 
 		for i in range(0, len(self.path) - 1):
@@ -47,22 +56,32 @@ class Graph(object):
 
 		edges = G.edges()
 		colors = [G[u][v]['color'] for u,v in edges]
-		pos = nx.spring_layout(G)
+		pos = nx.shell_layout(G)
 		nx.draw_networkx(G, pos=pos,with_labels=True, node_color='#00E8FC', edge_color=colors, width=1.0)
 		plt.title(title)
 		plt.axis("off")
+		mng = plt.get_current_fig_manager()
+		mng.canvas.set_window_title(self.name)
 		plt.show()
 
+
+	"""Auxiliary function to get the Vertex object given its name"""
 	def to_vertex(self: object, name: str) -> Vertex:
 		for vertex in self.V:
 			if vertex.name == name:
 				return vertex
 
+	"""
+		Function to solve the reachability problem in a non-deterministic way.
+		init: the init vertex
+		end_ the last vertex
+	"""
 	def solve_reachability(self: object, init: str, end: str) -> bool:
 		self.path = list()
 		edges = self.E
 		reverse_edges = [edge[::-1] for edge in self.E]
 		all_edges = edges + reverse_edges
+		all_edges = list(set(all_edges))
 		self.path.append(self.to_vertex(init))
 
 		while set(self.V) != set(self.path):
